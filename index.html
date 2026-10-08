@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Econophysics Colloquium 2027 | ICCS 2027, Kraków</title>
+<meta name="description" content="The 23rd Econophysics Colloquium (EC 2027), a workshop of ICCS 2027, the 27th International Conference on Computational Science. 12–14 July 2027, AGH University of Kraków, Poland.">
+<meta property="og:title" content="Econophysics Colloquium 2027">
+<meta property="og:description" content="The 23rd Econophysics Colloquium, a workshop of ICCS 2027. 12–14 July 2027, AGH University of Kraków, Poland. Paper deadline 5 February 2027.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EEF2EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1C16" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2310241B'/%3E%3Cpolyline points='4,22 9,18 13,21 17,8 20,17 24,13 28,15' fill='none' stroke='%23FF5F6D' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EEF2EC;
+    --paper-alt: #E5EBE3;
+    --grid-fine: rgba(47, 107, 79, 0.09);
+    --grid-major: rgba(47, 107, 79, 0.17);
+    --ink: #10241B;
+    --ink-2: #4A5D52;
+    --rule: rgba(16, 36, 27, 0.16);
+    --signal: #C4122F;
+    --signal-hover: #A30E26;
+    --signal-ink: #FFFFFF;
+    --link: #1F5A40;
+    --serif: "STIX Two Text", "STIX Two", "Times New Roman", Georgia, serif;
+    --sans: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+    --measure: 68ch;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0F1C16;
+      --paper-alt: #13241C;
+      --grid-fine: rgba(160, 210, 180, 0.05);
+      --grid-major: rgba(160, 210, 180, 0.10);
+      --ink: #E2EBE4;
+      --ink-2: #A3B5AA;
+      --rule: rgba(226, 235, 228, 0.16);
+      --signal: #FF5F6D;
+      --signal-hover: #FF8590;
+      --signal-ink: #1A0408;
+      --link: #8FD3AE;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+  }
+  img, canvas { max-width: 100%; }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+  a:hover { color: var(--signal); }
+  :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 48px); }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--ink); color: var(--paper); padding: 0.75rem 1rem;
+    font-family: var(--sans); font-weight: 600; text-decoration: none;
+  }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  /* Header */
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper);
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .header-inner { display: flex; align-items: center; gap: 1.5rem; min-height: 64px; }
+  .brand { display: flex; align-items: baseline; gap: 0.6rem; text-decoration: none; color: var(--ink); }
+  .brand:hover { color: var(--ink); }
+  .brand-mark { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; letter-spacing: 0.01em; }
+  .brand-sub { font-family: var(--sans); font-size: 0.875rem; color: var(--ink-2); }
+  .site-nav { margin-left: auto; }
+  .site-nav ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+  .site-nav a {
+    display: inline-block; padding: 0.3rem 0;
+    font-family: var(--sans); font-weight: 500; font-size: 0.9375rem;
+    color: var(--ink); text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  .site-nav a:hover { color: var(--ink); border-bottom-color: var(--signal); }
+  @media (max-width: 800px) {
+    .header-inner { flex-wrap: wrap; gap: 0.25rem 1rem; padding-block: 0.6rem; min-height: 0; }
+    .header-inner .btn-small { margin-left: auto; }
+    .site-nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; scrollbar-width: none; }
+    .site-nav ul { gap: 1rem; white-space: nowrap; }
+    .site-nav a { font-size: 0.875rem; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--sans); font-weight: 600; font-size: 1rem; line-height: 1;
+    padding: 0.95rem 1.35rem; border-radius: 4px; text-decoration: none;
+    border: 1.5px solid transparent;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primary { background: var(--signal); color: var(--signal-ink); }
+  .btn-primary:hover { background: var(--signal-hover); color: var(--signal-ink); }
+  .btn-ghost { border-color: var(--ink); color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn-small { padding: 0.62rem 0.95rem; font-size: 0.9375rem; }
+
+  /* Graph paper */
+  .paper {
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid-fine) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px);
+    background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    background-position: -1px -1px;
+  }
+
+  /* Hero */
+  .hero { padding-top: clamp(2.75rem, 7vw, 5.5rem); border-bottom: 1px solid var(--rule); }
+  .hero h1 {
+    margin: 0 0 1.6rem;
+    font-weight: 600;
+    font-size: clamp(2.9rem, 1rem + 7.4vw, 7.5rem);
+    line-height: 0.93;
+    letter-spacing: -0.018em;
+  }
+  .hero h1 .line { display: block; }
+  .lede {
+    margin: 0 0 2.2rem;
+    max-width: 42ch;
+    font-size: clamp(1.15rem, 1rem + 0.55vw, 1.45rem);
+    line-height: 1.45;
+  }
+  .lede a { color: inherit; }
+  .facts { display: flex; flex-wrap: wrap; gap: 1.1rem 3.25rem; margin: 0 0 2.25rem; }
+  .facts dt { font-family: var(--sans); font-size: 0.8125rem; color: var(--ink-2); margin-bottom: 0.2rem; }
+  .facts dd { margin: 0; font-family: var(--sans); font-weight: 600; font-size: 1.0625rem; }
+  .facts .key dd, .facts .key dd a { color: var(--signal); }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  .hero-chart { margin-top: clamp(2.25rem, 5vw, 3.75rem); margin-bottom: 0; padding-bottom: 1.5rem; }
+  #road { display: block; width: 100%; height: clamp(230px, 30vw, 340px); }
+  .hero-chart figcaption {
+    margin-top: 0.6rem; max-width: 78ch;
+    font-family: var(--sans); font-size: 0.8125rem; line-height: 1.5; color: var(--ink-2);
+  }
+
+  /* Sections */
+  .section { padding-block: clamp(3.5rem, 8vw, 6.5rem); border-bottom: 1px solid var(--rule); }
+  .section.alt { background: var(--paper-alt); }
+  .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 2rem; }
+  .section-title {
+    grid-column: 1 / span 4;
+    align-self: start;
+    position: sticky; top: 96px;
+    margin: 0 0 1.5rem;
+    font-weight: 600;
+    font-size: clamp(1.8rem, 1.2rem + 1.7vw, 2.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.008em;
+  }
+  .section-title.static { position: static; }
+  .section-body { grid-column: 5 / span 8; min-width: 0; }
+  .section-wide { grid-column: 1 / -1; min-width: 0; }
+  @media (max-width: 900px) {
+    .section-title { grid-column: 1 / -1; position: static; }
+    .section-body { grid-column: 1 / -1; }
+  }
+  .prose p { margin: 0 0 1.1em; max-width: var(--measure); }
+  h3 { margin: 3rem 0 1rem; font-weight: 600; font-size: 1.4rem; line-height: 1.25; }
+  .section-body > h3:first-child { margin-top: 0.3rem; }
+  .note { font-family: var(--sans); font-size: 0.875rem; line-height: 1.5; color: var(--ink-2); max-width: var(--measure); }
+
+  /* Topics */
+  .topics { list-style: none; margin: 0; padding: 0; columns: 2 17rem; column-gap: 2.75rem; }
+  .topics li { position: relative; break-inside: avoid; padding-left: 1.2rem; margin-bottom: 0.55rem; line-height: 1.45; }
+  .topics li::before {
+    content: ""; position: absolute; left: 0; top: 0.72em;
+    width: 0.6rem; height: 2px; background: var(--signal);
+  }
+
+  /* Submission table */
+  .table-wrap { overflow-x: auto; }
+  .types { width: 100%; max-width: 42rem; border-collapse: collapse; font-family: var(--sans); font-size: 0.9375rem; }
+  .types th, .types td { text-align: left; padding: 0.75rem 1.25rem 0.75rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .types thead th { font-weight: 600; font-size: 0.8125rem; color: var(--ink-2); border-bottom: 1.5px solid var(--ink); }
+  .types tbody th { font-weight: 600; }
+
+  /* Steps */
+  .steps { list-style: none; counter-reset: step; margin: 0; padding: 0; max-width: var(--measure); }
+  .steps li { counter-increment: step; position: relative; padding-left: 2.9rem; margin-bottom: 1.15rem; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0.12rem;
+    width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    display: grid; place-items: center;
+    font-family: var(--sans); font-weight: 600; font-size: 0.875rem; line-height: 1;
+  }
+
+  /* Timeline */
+  .dates-intro { grid-column: 5 / span 8; margin: 0 0 2.5rem; max-width: var(--measure); }
+  @media (max-width: 900px) { .dates-intro { grid-column: 1 / -1; } }
+  .timeline {
+    position: relative; list-style: none; margin: 0 0 2.75rem; padding: 0;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: var(--ink); }
+  .timeline li { position: relative; padding: 2.4rem 1.5rem 0 0; }
+  .timeline li::before {
+    content: ""; position: absolute; left: 0; top: 0;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--ink);
+  }
+  .timeline .when { display: block; font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-height: 1.25; }
+  .timeline .what { display: block; margin-top: 0.4rem; font-size: 1rem; line-height: 1.4; color: var(--ink-2); }
+  .timeline li.key::before { background: var(--signal); border-color: var(--signal); }
+  .timeline li.key .when { color: var(--signal); }
+  .timeline li.final::before { background: var(--ink); }
+  @media (max-width: 800px) {
+    .timeline { grid-template-columns: 1fr; }
+    .timeline::before { left: 7px; right: auto; top: 4px; bottom: 1.5rem; width: 2px; height: auto; }
+    .timeline li { padding: 0 0 1.6rem 2.4rem; }
+    .timeline li::before { top: 0.2rem; }
+  }
+  .official { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+  .official .note { margin: 0; max-width: 52ch; }
+
+  /* People */
+  .people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1.5rem 2rem; }
+  .people .name { display: block; font-weight: 600; font-size: 1.15rem; line-height: 1.3; }
+  .people .aff { display: block; margin-top: 0.2rem; font-family: var(--sans); font-size: 0.875rem; line-height: 1.4; color: var(--ink-2); }
+  .people.organisers .name { font-size: 1.45rem; }
+  .tba { margin: 0; font-style: italic; color: var(--ink-2); }
+
+  /* Venue links */
+  .link-list { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  /* Editions */
+  .editions { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .editions li { border-bottom: 1px solid var(--rule); }
+  .editions a {
+    display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.25rem 1.5rem;
+    padding: 1.15rem 0; color: var(--ink); text-decoration: none;
+  }
+  .editions .yr { font-family: var(--sans); font-weight: 700; font-size: 1.2rem; line-height: 1.35; }
+  .editions .ed-title { display: block; font-weight: 600; line-height: 1.35; }
+  .editions .ed-where { display: block; font-family: var(--sans); font-size: 0.875rem; color: var(--ink-2); margin-top: 0.15rem; }
+  .editions a:hover .ed-title { color: var(--signal); text-decoration: underline; text-underline-offset: 0.18em; }
+
+  /* Footer */
+  .site-footer { padding-block: 2.75rem 3.25rem; font-family: var(--sans); font-size: 0.875rem; line-height: 1.55; color: var(--ink-2); }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2.5rem; }
+  .footer-inner p { margin: 0; max-width: 60ch; }
+  .footer-brand { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">EC 2027</span>
+      <span class="brand-sub">Kraków</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#call">Call for papers</a></li>
+        <li><a href="#dates">Dates</a></li>
+        <li><a href="#committee">Committee</a></li>
+        <li><a href="#venue">Venue</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-small" href="https://easychair.org/conferences/?conf=iccs2027">Submit</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero paper" id="top" aria-labelledby="title">
+    <div class="wrap">
+      <h1 id="title"><span class="line">Econophysics</span> <span class="line">Colloquium 2027</span></h1>
+      <p class="lede">The 23rd Econophysics Colloquium, held as a workshop of <a href="https://www.iccs-meeting.org/iccs2027/">ICCS 2027</a>, the 27th International Conference on Computational Science.</p>
+      <dl class="facts">
+        <div><dt>When</dt><dd>12–14 July 2027</dd></div>
+        <div><dt>Where</dt><dd>AGH University of Kraków, Poland</dd></div>
+        <div class="key"><dt>Paper deadline</dt><dd><a href="https://www.iccs-meeting.org/iccs2027/important-dates/">5 February 2027 (AoE)</a></dd></div>
+      </dl>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://easychair.org/conferences/?conf=iccs2027">Submit via EasyChair</a>
+        <a class="btn btn-ghost" href="#call">Read the call for papers</a>
+      </div>
+    </div>
+    <figure class="wrap hero-chart">
+      <canvas id="road" role="img" aria-label="Illustrative simulated log-price and return series running from October 2026 to July 2027, with the paper deadline, the notification date and the Colloquium marked on the time axis."></canvas>
+      <figcaption>Illustration: a simulated log-price and its returns, GARCH(1,1) with Student-t innovations, drawn on the road to Kraków. Returns beyond three standard deviations are in red. Dashed lines mark the paper deadline and notification; the shaded band marks the Colloquium.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap grid">
+      <h2 class="section-title" id="about-title">About the Colloquium</h2>
+      <div class="section-body prose">
+        <p>The Econophysics Colloquium is an annual meeting for researchers who study economic, financial and social systems with the methods of statistical physics, complex systems and data science. Since its first edition in Canberra in 2005, it has brought together physicists, economists, mathematicians, computer scientists and practitioners from finance and industry to compare results, exchange methods and debate different views on shared problems.</p>
+        <p>For its 23rd edition the Colloquium comes to Kraków as a workshop of the International Conference on Computational Science. Computation now sits at the heart of the field, from agent-based simulation and network reconstruction to the analysis of high-frequency, alternative and climate data with machine learning. The ICCS 2027 theme, <em>Natural Intelligence meets Artificial Intelligence for Scientific Computing</em>, is a natural meeting point for that work.</p>
+        <p>We particularly encourage PhD students, postdoctoral researchers and other early-career scientists to take part.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL FOR PAPERS -->
+  <section class="section alt" id="call" aria-labelledby="call-title">
+    <div class="wrap grid">
+      <h2 class="section-title" id="call-title">Call for papers</h2>
+      <div class="section-body">
+        <div class="prose">
+          <p>We invite original contributions on the physics-inspired, data-driven and computational study of economic, financial and social systems. Theoretical, empirical and methodological work are equally welcome. Topics include, but are not limited to:</p>
+        </div>
+        <ul class="topics">
+          <li>Statistical physics of economic and financial systems</li>
+          <li>Stylised facts, heavy tails, scaling and multiscaling</li>
+          <li>Market microstructure, order books and price impact</li>
+          <li>Volatility modelling, rough volatility and financial risk</li>
+          <li>Agent-based models: theory, calibration and large-scale simulation</li>
+          <li>Economic and financial networks, contagion and systemic risk</li>
+          <li>Correlation structure, filtered graphs and high-dimensional data</li>
+          <li>Economic complexity, production networks and supply chains</li>
+          <li>Wealth and income distributions and inequality</li>
+          <li>Climate finance, sustainability and the green transition</li>
+          <li>Machine learning, AI and language models in economics and finance</li>
+          <li>Crises, extreme events and early-warning signals</li>
+          <li>Cryptocurrencies, fintech and digital markets</li>
+          <li>Social and behavioural dynamics, opinions and information spreading</li>
+        </ul>
+
+        <h3>Submission types</h3>
+        <div class="table-wrap">
+          <table class="types">
+            <thead>
+              <tr><th scope="col">Type</th><th scope="col">Length</th><th scope="col">Published in LNCS</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Full paper</th><td>12–15 pages</td><td>Yes</td></tr>
+              <tr><th scope="row">Short paper</th><td>6–8 pages</td><td>Yes</td></tr>
+              <tr><th scope="row">Abstract</th><td>2 pages</td><td>No, included in the programme only</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Page limits include references and appendices. The abstract option suits work intended for a journal, or authors who cannot publish proceedings papers but still want to present and discuss their research.</p>
+
+        <h3>Talks and posters</h3>
+        <div class="prose">
+          <p>Accepted contributions are presented as talks or posters. We are planning a dedicated poster session so that PhD students and early-career researchers have more room to present their work and discuss it with the community.</p>
+        </div>
+
+        <h3>How to submit</h3>
+        <ol class="steps">
+          <li>Prepare your manuscript in English using the <a href="https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines">Springer LNCS template</a>, also available <a href="https://www.overleaf.com/latex/templates/springer-lecture-notes-in-computer-science/kzwwpvhwnvfj">on Overleaf</a>.</li>
+          <li>Submit it through the <a href="https://easychair.org/conferences/?conf=iccs2027">ICCS 2027 EasyChair page</a> and choose the Econophysics Colloquium workshop as your track.</li>
+          <li>Make the computational contribution explicit. ICCS screens every submission, workshops included, for its relevance to computational science, and papers outside that scope are desk-rejected.</li>
+        </ol>
+        <p class="note">Review is single-blind, so author names and affiliations stay on the paper. Submission implies that at least one author will register and present. Deadlines follow the <a href="https://www.iccs-meeting.org/iccs2027/important-dates/">ICCS 2027 important dates</a>, and full author instructions are in the <a href="https://www.iccs-meeting.org/iccs2027/call-for-papers/">ICCS 2027 call for papers</a>.</p>
+
+        <h3>Publication</h3>
+        <div class="prose">
+          <p>Accepted full and short papers appear in the ICCS 2027 workshop proceedings, published in Springer's Lecture Notes in Computer Science and indexed in the major services. After the conference, the best ICCS papers are invited to a special issue of the <a href="https://www.sciencedirect.com/journal/journal-of-computational-science">Journal of Computational Science</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPORTANT DATES -->
+  <section class="section" id="dates" aria-labelledby="dates-title">
+    <div class="wrap grid">
+      <h2 class="section-title static" id="dates-title">Important dates</h2>
+      <p class="dates-intro">EC 2027 follows the ICCS 2027 schedule. All deadlines are anywhere on Earth (AoE).</p>
+      <div class="section-wide">
+        <ol class="timeline">
+          <li class="key"><span class="when">5 February 2027</span><span class="what">Paper submission deadline</span></li>
+          <li><span class="when">5 April 2027</span><span class="what">Notification to authors</span></li>
+          <li><span class="when">5–23 April 2027</span><span class="what">Author registration</span></li>
+          <li><span class="when">23 April 2027</span><span class="what">Camera-ready papers</span></li>
+          <li class="final"><span class="when">12–14 July 2027</span><span class="what">Conference in Kraków</span></li>
+        </ol>
+        <div class="official">
+          <a class="btn btn-ghost" href="https://www.iccs-meeting.org/iccs2027/important-dates/">See the official ICCS 2027 dates</a>
+          <p class="note">Dates are set by ICCS and may change. The ICCS 2027 page is always the reference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMITTEE -->
+  <section class="section alt" id="committee" aria-labelledby="committee-title">
+    <div class="wrap grid">
+      <h2 class="section-title" id="committee-title">Committee</h2>
+      <div class="section-body">
+        <h3>Organisers</h3>
+        <ul class="people organisers">
+          <li><span class="name">Tiziana Di Matteo</span><span class="aff">King's College London</span></li>
+          <li><span class="name">Giuseppe Brandi</span><span class="aff">Northeastern University London</span></li>
+        </ul>
+
+        <h3>Scientific Programme Committee</h3>
+        <!-- Alphabetical by surname. Edit affiliations here once members confirm them. -->
+        <ul class="people">
+          <li><span class="name">Jean-Philippe Bouchaud</span><span class="aff">Capital Fund Management, Paris</span></li>
+          <li><span class="name">Guido Caldarelli</span><span class="aff">Ca' Foscari University of Venice</span></li>
+          <li><span class="name">Siew Ann Cheong</span><span class="aff">Nanyang Technological University, Singapore</span></li>
+          <li><span class="name">Tiziana Di Matteo</span><span class="aff">King's College London</span></li>
+          <li><span class="name">Mauro Gallegati</span><span class="aff">Università Politecnica delle Marche</span></li>
+          <li><span class="name">János Kertész</span><span class="aff">Central European University, Vienna</span></li>
+          <li><span class="name">Alan Kirman</span><span class="aff">EHESS, Paris</span></li>
+          <li><span class="name">Thomas Lux</span><span class="aff">Kiel University</span></li>
+          <li><span class="name">Stefan Thurner</span><span class="aff">Complexity Science Hub, Vienna</span></li>
+          <li><span class="name">Wei-Xing Zhou</span><span class="aff">East China University of Science and Technology</span></li>
+        </ul>
+
+        <h3>Invited speakers</h3>
+        <p class="tba">To be announced.</p>
+
+        <!-- To add a contact address, uncomment and edit:
+        <h3>Contact</h3>
+        <p>Questions about EC 2027: <a href="mailto:name@example.org">name@example.org</a></p>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="section" id="venue" aria-labelledby="venue-title">
+    <div class="wrap grid">
+      <h2 class="section-title" id="venue-title">Venue and registration</h2>
+      <div class="section-body prose">
+        <p>EC 2027 runs within ICCS 2027 at AGH University of Kraków, Poland, from 12 to 14 July 2027.</p>
+        <p>Registration and fees are handled by ICCS for the main conference and all its workshops, the Colloquium included. Authors of accepted papers register between 5 and 23 April 2027. Other participants can register for in-person attendance from 5 April to 11 June 2027.</p>
+        <ul class="link-list">
+          <li><a class="btn btn-ghost btn-small" href="https://www.iccs-meeting.org/iccs2027/registration/">ICCS 2027 registration</a></li>
+          <li><a class="btn btn-ghost btn-small" href="https://www.iccs-meeting.org/iccs2027/meeting-format/">Meeting format</a></li>
+          <li><a class="btn btn-ghost btn-small" href="https://www.agh.edu.pl/en">AGH University of Kraków</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVIOUS EDITIONS -->
+  <section class="section alt" id="editions" aria-labelledby="editions-title">
+    <div class="wrap grid">
+      <h2 class="section-title" id="editions-title">Previous editions</h2>
+      <div class="section-body">
+        <ul class="editions">
+          <li><a href="https://www.eshia.org/wehia26/">
+            <span class="yr">2026</span>
+            <span><span class="ed-title">Econophysics Colloquium with WEHIA 2026</span><span class="ed-where">Joint meeting with the Workshop on Economics with Heterogeneous Interacting Agents</span></span>
+          </a></li>
+          <li><a href="https://sites.google.com/view/cef-statphys29/home">
+            <span class="yr">2025</span>
+            <span><span class="ed-title">Complexity in Economics &amp; Finance</span><span class="ed-where">Rome, a StatPhys29 satellite held jointly with #FinEcoNets</span></span>
+          </a></li>
+          <li><a href="https://csh.ac.at/events/econophysics-colloquium-2024/">
+            <span class="yr">2024</span>
+            <span><span class="ed-title">Econophysics Colloquium 2024</span><span class="ed-where">Vienna, Complexity Science Hub, the 20th edition</span></span>
+          </a></li>
+          <li><a href="https://www.econophysics-colloquium.org/">
+            <span class="yr">2005–</span>
+            <span><span class="ed-title">All editions of the Econophysics Colloquium</span><span class="ed-where">From the first meeting in Canberra to today</span></span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><span class="footer-brand">EC 2027</span><br>The 23rd Econophysics Colloquium, a workshop of <a href="https://www.iccs-meeting.org/iccs2027/">ICCS 2027</a>, the 27th International Conference on Computational Science.</p>
+    <p>12–14 July 2027<br>AGH University of Kraków, Poland</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const canvas = document.getElementById('road');
+  if (!canvas || !canvas.getContext) return;
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Seeded generator, so every visitor sees the same path.
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  const rand = mulberry32(2027);
+  const gauss = () => { let u = 0, v = 0; while (!u) u = rand(); while (!v) v = rand(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+  const studentT = nu => { let c = 0; for (let i = 0; i < nu; i++) { const g = gauss(); c += g * g; } return gauss() / Math.sqrt(c / nu); };
+
+  // GARCH(1,1) with unit-variance Student-t(4) innovations and a small drift.
+  const N = 600, alpha = 0.09, beta = 0.89, omega = 1 - alpha - beta, nu = 4, drift = 0.035;
+  const r = new Float64Array(N), p = new Float64Array(N + 1);
+  let s2 = 1;
+  for (let i = 0; i < N; i++) {
+    const x = Math.sqrt(s2) * studentT(nu) / Math.sqrt(nu / (nu - 2));
+    r[i] = x; p[i + 1] = p[i] + x + drift;
+    s2 = omega + alpha * x * x + beta * s2;
+  }
+  let sumsq = 0, rmax = 0, pmin = Infinity, pmax = -Infinity;
+  for (let i = 0; i < N; i++) { sumsq += r[i] * r[i]; rmax = Math.max(rmax, Math.abs(r[i])); }
+  for (let i = 0; i <= N; i++) { pmin = Math.min(pmin, p[i]); pmax = Math.max(pmax, p[i]); }
+  const sd = Math.sqrt(sumsq / N);
+
+  // Time axis: 1 October 2026 to 1 August 2027.
+  const T0 = Date.UTC(2026, 9, 1), T1 = Date.UTC(2027, 7, 1);
+  const frac = t => (t - T0) / (T1 - T0);
+  const MARKS = [
+    { t: Date.UTC(2027, 1, 5), label: 'Paper deadline', short: 'Deadline', strong: true },
+    { t: Date.UTC(2027, 3, 5), label: 'Notification', short: 'Notification', strong: false, optional: true }
+  ];
+  const BAND = { t0: Date.UTC(2027, 6, 12), t1: Date.UTC(2027, 6, 15), label: 'EC 2027, Kraków', short: 'EC 2027' };
+  const MONTHS = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+
+  const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  let W = 0, H = 0, progress = 0;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = rect.width; H = rect.height;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw(prog) {
+    const ink = css('--ink'), ink2 = css('--ink-2'), sig = css('--signal'), rule = css('--rule');
+    const narrow = W < 600;
+    ctx.clearRect(0, 0, W, H);
+
+    const top = 30, axisH = 26, gap = 16;
+    const plotH = H - top - axisH;
+    const priceH = plotH * 0.6;
+    const retTop = top + priceH + gap, retH = plotH - priceH - gap;
+    const xAt = i => (i / N) * W;
+    const py = v => top + priceH * 0.06 + (1 - (v - pmin) / (pmax - pmin)) * priceH * 0.88;
+    const ry0 = retTop + retH / 2;
+    const rScale = Math.min(rmax, 4.5 * sd);
+    const ry = v => ry0 - Math.max(-1, Math.min(1, v / rScale)) * (retH / 2);
+    const nDraw = Math.max(1, Math.floor(prog * N));
+    const xHead = xAt(nDraw);
+    const sans = w => `${w} ${narrow ? 11 : 12.5}px Archivo, "Helvetica Neue", Arial, sans-serif`;
+
+    // Colloquium band
+    const xa = frac(BAND.t0) * W, xb = Math.max(frac(BAND.t1) * W, xa + 7);
+    if (xHead >= xa || prog >= 1) {
+      ctx.globalAlpha = 0.16; ctx.fillStyle = sig; ctx.fillRect(xa, top, xb - xa, plotH); ctx.globalAlpha = 1;
+      ctx.fillStyle = sig; ctx.font = sans(600); ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText(narrow ? BAND.short : BAND.label, xb, top - 12);
+    }
+
+    // Date markers
+    ctx.setLineDash([4, 4]); ctx.lineWidth = 1.25;
+    for (const m of MARKS) {
+      const xm = frac(m.t) * W;
+      if (xHead < xm && prog < 1) continue;
+      ctx.strokeStyle = m.strong ? sig : ink2;
+      ctx.beginPath(); ctx.moveTo(Math.round(xm) + 0.5, top - 4); ctx.lineTo(Math.round(xm) + 0.5, top + plotH); ctx.stroke();
+      if (m.optional && W < 440) continue;
+      ctx.fillStyle = m.strong ? sig : ink2; ctx.font = sans(600); ctx.textAlign = 'left';
+      ctx.fillText(narrow ? m.short : m.label, xm + 6, top - 12);
+    }
+    ctx.setLineDash([]);
+
+    // Returns baseline and bars
+    ctx.strokeStyle = rule; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, Math.round(ry0) + 0.5); ctx.lineTo(W, Math.round(ry0) + 0.5); ctx.stroke();
+    const bw = Math.max(1, (W / N) * 0.72);
+    for (let i = 0; i < nDraw; i++) {
+      const v = r[i], extreme = Math.abs(v) > 3 * sd, y = ry(v);
+      ctx.fillStyle = extreme ? sig : ink2;
+      ctx.globalAlpha = extreme ? 1 : 0.5;
+      ctx.fillRect(xAt(i + 0.5) - bw / 2, Math.min(y, ry0), bw, Math.max(0.75, Math.abs(y - ry0)));
+    }
+    ctx.globalAlpha = 1;
+
+    // Price path
+    ctx.strokeStyle = ink; ctx.lineWidth = narrow ? 1.5 : 1.8; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.beginPath();
+    for (let i = 0; i <= nDraw; i++) { const X = xAt(i), Y = py(p[i]); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }
+    ctx.stroke();
+    ctx.fillStyle = sig;
+    ctx.beginPath(); ctx.arc(xHead, py(p[nDraw]), narrow ? 3 : 3.75, 0, Math.PI * 2); ctx.fill();
+
+    // Panel labels, set in the italic of the text face like symbols in a paper
+    ctx.fillStyle = ink2; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.font = `italic ${narrow ? 14 : 16}px "STIX Two Text", "Times New Roman", serif`;
+    ctx.fillText('log p(t)', 2, top + priceH * 0.06 + 4);
+    ctx.fillText('r(t)', 2, retTop + 6);
+
+    // Month axis
+    const axisY = H - axisH + 0.5;
+    ctx.strokeStyle = rule; ctx.beginPath(); ctx.moveTo(0, axisY); ctx.lineTo(W, axisY); ctx.stroke();
+    ctx.fillStyle = ink2; ctx.font = sans(500); ctx.textBaseline = 'top';
+    MONTHS.forEach((name, k) => {
+      const X = frac(Date.UTC(2026, 9 + k, 1)) * W;
+      ctx.strokeStyle = ink2; ctx.beginPath(); ctx.moveTo(Math.round(X) + 0.5, axisY); ctx.lineTo(Math.round(X) + 0.5, axisY + 5); ctx.stroke();
+      if (narrow && k % 2) return;
+      let text = name;
+      if (!narrow && k === 0) text = 'Oct 2026';
+      if (!narrow && k === 3) text = 'Jan 2027';
+      ctx.textAlign = k === 0 ? 'left' : 'center';
+      ctx.fillText(text, k === 0 ? Math.max(X, 0) : X, axisY + 8);
+    });
+  }
+
+  function animate() {
+    if (reduceMotion) { progress = 1; draw(1); return; }
+    const duration = 2600;
+    let start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      const t = Math.min(1, (ts - start) / duration);
+      progress = 1 - Math.pow(1 - t, 3);
+      draw(progress);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function begin() { resize(); animate(); }
+
+  // Wait briefly for the web fonts so canvas labels use them; start anyway after 1.5 s.
+  let started = false;
+  const go = () => { if (!started) { started = true; begin(); } };
+  if (document.fonts && document.fonts.load) {
+    Promise.all([
+      document.fonts.load('italic 16px "STIX Two Text"'),
+      document.fonts.load('600 12.5px Archivo'),
+      document.fonts.load('500 12.5px Archivo')
+    ]).then(go, go);
+    setTimeout(go, 1500);
+  } else {
+    go();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { if (started) { resize(); draw(progress); } }, 120);
+  });
+  const scheme = window.matchMedia('(prefers-color-scheme: dark)');
+  if (scheme.addEventListener) scheme.addEventListener('change', () => { if (started) draw(progress); });
+})();
+</script>
+</body>
+</html>
